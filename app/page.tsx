@@ -1,8 +1,9 @@
+import { Database } from "@/lib/database.types";
 import { createServerComponentSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { headers, cookies } from "next/headers";
 
 export default async function Posts() {
-  const supabase = createServerComponentSupabaseClient({
+  const supabase = createServerComponentSupabaseClient<Database>({
     headers,
     cookies,
   });

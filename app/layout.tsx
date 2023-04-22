@@ -3,9 +3,10 @@ import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import "./globals.css";
+import { Database } from "@/lib/database.types";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  const [supabase] = useState(() => createBrowserSupabaseClient());
+  const [supabase] = useState(() => createBrowserSupabaseClient<Database>());
   const router = useRouter();
 
   useEffect(() => {
