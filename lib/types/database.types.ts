@@ -43,9 +43,9 @@ export interface Database {
           id: string
           late: number
           miss: number
-          player_1: string | null
-          player_2: string | null
-          score: number | null
+          player_1: string
+          player_2: string
+          score: number
           song_id: string
           white_perfect: number
           yellow_perfect: number
@@ -58,9 +58,9 @@ export interface Database {
           id?: string
           late?: number
           miss?: number
-          player_1?: string | null
-          player_2?: string | null
-          score?: number | null
+          player_1: string
+          player_2: string
+          score: number
           song_id?: string
           white_perfect?: number
           yellow_perfect?: number
@@ -73,9 +73,9 @@ export interface Database {
           id?: string
           late?: number
           miss?: number
-          player_1?: string | null
-          player_2?: string | null
-          score?: number | null
+          player_1?: string
+          player_2?: string
+          score?: number
           song_id?: string
           white_perfect?: number
           yellow_perfect?: number

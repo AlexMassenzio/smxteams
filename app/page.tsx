@@ -11,7 +11,7 @@ export default async function Posts() {
   });
   const { data: scores } = await supabase.from("scores").select();
   const scoreItems = scores?.map((scoreData) => {
-    return <Score scoreData={scoreData} />;
+    return <Score key={scoreData.id} scoreData={scoreData} />;
   });
   return (
     <div>
