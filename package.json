@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "supabase start & next dev",
     "db:kill": "supabase stop",
+    "db:types": "supabase gen types typescript --local > lib/types/database.types.ts",
     "db:diff": "supabase db diff --use-migra -f scores_table_update",
+    "db:push": "supabase db push",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
