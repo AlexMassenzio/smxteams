@@ -1,12 +1,14 @@
 "use client";
 import { createBrowserSupabaseClient } from "@supabase/auth-helpers-nextjs";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import "./globals.css";
-import { Database } from "@/lib/database.types";
+import { Database } from "@/lib/types/database.types";
+import { SupabaseContext } from "@/lib/supabaseContext";
+import Link from "next/link";
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  const [supabase] = useState(() => createBrowserSupabaseClient<Database>());
+  const supabase = useContext(SupabaseContext);
   const router = useRouter();
 
   useEffect(() => {
@@ -21,20 +23,6 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     };
   }, [supabase, router]);
 
-  const signUp = () => {
-    supabase.auth.signUp({
-      email: "dev@alexmassenzio.com",
-      password: "passw0rd",
-    });
-  };
-
-  const signIn = () => {
-    supabase.auth.signInWithPassword({
-      email: "dev@alexmassenzio.com",
-      password: "passw0rd",
-    });
-  };
-
   const signOut = () => {
     supabase.auth.signOut();
   };
@@ -42,9 +30,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body>
-        <button onClick={signUp}>Sign Up</button>
-        <button onClick={signIn}>Sign In</button>
+        <Link href="/signup">Sign Up</Link>
+        <Link href="/login">Sign In</Link>
         <button onClick={signOut}>Sign Out</button>
+        <br />
         {children}
       </body>
     </html>

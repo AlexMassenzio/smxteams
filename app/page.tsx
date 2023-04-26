@@ -1,6 +1,8 @@
-import { Database } from "@/lib/database.types";
+import { Database } from "@/lib/types/database.types";
 import { createServerComponentSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { headers, cookies } from "next/headers";
+import Score from "./score";
+import NewScoreForm from "@/lib/components/newScoreForm";
 
 export default async function Posts() {
   const supabase = createServerComponentSupabaseClient<Database>({
@@ -8,5 +10,13 @@ export default async function Posts() {
     cookies,
   });
   const { data: scores } = await supabase.from("scores").select();
-  return <pre>{JSON.stringify(scores, null, 2)}</pre>;
+  const scoreItems = scores?.map((scoreData) => {
+    return <Score scoreData={scoreData} />;
+  });
+  return (
+    <div>
+      <NewScoreForm />
+      {scoreItems}
+    </div>
+  );
 }
