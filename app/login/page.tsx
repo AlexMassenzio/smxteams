@@ -1,14 +1,14 @@
 "use client";
-import { useContext, useState } from "react";
-import { SupabaseContext } from "@/lib/supabaseContext";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useSupabase } from "../supabaseProvider";
 
 const Page = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const router = useRouter();
-  const supabase = useContext(SupabaseContext);
+  const { supabase } = useSupabase();
   const signIn = () => {
     supabase.auth.signInWithPassword({
       email: email,

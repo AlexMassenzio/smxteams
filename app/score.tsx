@@ -1,17 +1,16 @@
 import { Score } from "@/lib/types/scores.types";
 
-const Score = (props: { scoreData: Score }) => {
+const Score = (props: { scoreData: Score; rowNumber: number }) => {
   const scoreData = props.scoreData;
   return (
-    <div className="border-gray-200 border-2">
-      <h1>Submitted by: {scoreData.author || "Anonymous"}</h1>
-      <ul>
-        <li>{scoreData.player_1}</li>
-        <li>{scoreData.player_2}</li>
-      </ul>
-      <h2>Song: {scoreData.song_id}</h2>
-      <h3>Score: {scoreData.score}</h3>
-    </div>
+    <tr>
+      <th>{props.rowNumber}</th>
+      <th>{scoreData.song_id}</th>
+      <th>{scoreData.player_1}</th>
+      <th>{scoreData.player_2}</th>
+      <th>{scoreData.score}</th>
+      <th>{scoreData.created_at}</th>
+    </tr>
   );
 };
 
