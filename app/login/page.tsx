@@ -26,16 +26,16 @@ const Page = () => {
         name="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="text-black"
+        className="input input-bordered"
       />
       <label htmlFor="password">Password:</label>
       <input
-        type="text"
+        type="password"
         id="password"
         name="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        className="text-black"
+        className="input input-bordered"
       />
       <button type="button" onClick={signIn}>
         Sign In
