@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { SupabaseContext } from "../supabaseContext";
+import { useRouter } from "next/navigation";
 
 const NewScoreForm = () => {
   const [player_1, setPlayer_1] = useState("");
@@ -10,6 +11,7 @@ const NewScoreForm = () => {
   const [score, setScore] = useState(0);
   const [approved, setApproved] = useState(true);
 
+  const router = useRouter();
   const supabase = useContext(SupabaseContext);
   const submitScore = async () => {
     const { error } = await supabase.from("scores").insert({
@@ -19,6 +21,7 @@ const NewScoreForm = () => {
       score,
       approved,
     });
+    router.refresh();
   };
 
   return (
